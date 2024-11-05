@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WebCamLib;
 
 namespace Display_Image_Processing
 {
     public partial class Form1 : Form
     {
         Bitmap loaded, processed;
+        Device [] mgaDevice;
         public Form1()
         {
             InitializeComponent();
@@ -126,7 +128,37 @@ namespace Display_Image_Processing
 
         }
 
+        
+        private void imageSubtractToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ImageSubtract subtractForm = new ImageSubtract();
+            subtractForm.Show();
 
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            mgaDevice = DeviceManager.GetAllDevices();
+        }
+
+        private void onToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+                mgaDevice[0].ShowWindow(pictureBox1);
+          
+        }
+
+        private void offToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mgaDevice[0].Stop();
+        }
+
+       
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
