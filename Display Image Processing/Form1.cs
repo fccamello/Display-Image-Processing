@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ImageProcess2;
 using WebCamLib;
 
 namespace Display_Image_Processing
@@ -158,7 +159,123 @@ namespace Display_Image_Processing
             mgaDevice[0].Stop();
         }
 
-       
+        private void smoothinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            processed = new Bitmap(loaded);
+            BitmapFilter.Smooth(processed, 1);
+            pictureBox2.Image = processed;
+        }
+
+        private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            processed = new Bitmap(loaded);
+            BitmapFilter.Sharpen(processed, 11);
+            pictureBox2.Image = processed;
+        }
+
+        private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            processed = new Bitmap(loaded);
+            BitmapFilter.GaussianBlur(processed, 6);
+            pictureBox2.Image = processed;
+        }
+
+        private void edgeDetectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            processed = new Bitmap(loaded);
+            BitmapFilter.EdgeDetectQuick(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void embossLaplascianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossLaplacian(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void horizontalVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossHorizontalVertical(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (loaded == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossVertical(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossHorizontal(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void allDirectionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossAll(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void lossyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossLossy(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void meanRemovalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded);
+            BitmapFilter.MeanRemoval(processed, 9);
+            pictureBox2.Image = processed;
+        }
+
+        private void edgeEnhanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded);
+            BitmapFilter.EdgeEnhance(processed, 50);
+            pictureBox2.Image = processed;
+        }
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
