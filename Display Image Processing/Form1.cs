@@ -276,6 +276,12 @@ namespace Display_Image_Processing
             pictureBox2.Image = processed;
         }
 
+        private void coinsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Coins coins = new Coins();
+            coins.Show();
+        }
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
